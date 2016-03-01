@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+# Print out the current menu offerings at the UCLA dining halls
+# Usage: menu
+
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -15,8 +18,17 @@ for table in soup.find_all(class_="menugridtable"):
         pass
     halls = table.find_all(class_="menulocheader")
     for i in range(0,2):
-        print('\t' + halls[i].string)
+        try:
+            print('\t' + halls[i].string)
+        except:
+            pass
         for cell in table.find_all(class_=cell_types[i]):
-            print("\t\t" + cell.li.string)
+            try:
+                print("\t\t" + cell.li.string)
+            except:
+                pass
             for item in cell.find_all(class_=re.compile("^itemlink")):
-                print("\t\t\t" + item.string)
+                try:
+                    print("\t\t\t" + item.string)
+                except:
+                    pass
