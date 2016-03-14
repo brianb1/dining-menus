@@ -7,7 +7,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-html = requests.get("http://menu.ha.ucla.edu/foodpro/default.asp")
+html = requests.get("http://menu.ha.ucla.edu/foodpro/")
 soup = BeautifulSoup(html.text, "html.parser")
 cell_types = ["menugridcell", "menugridcell_last"]
 
